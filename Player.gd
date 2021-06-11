@@ -16,6 +16,7 @@ var chain_velocity := Vector2(0,0)
 var can_jump = false			# Whether the player used their air-jump
 
 func _should_shoot_at(position):
+	$Chain.release()
 	print("hello")
 	var look_vec = position - global_position
 	$Chain.shoot(look_vec)
