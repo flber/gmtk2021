@@ -21,18 +21,10 @@ script = ExtResource( 2 )
 position = Vector2( 509.692, 596.529 )
 shape = SubResource( 1 )
 
-[node name="GraplePoint" parent="." instance=ExtResource( 4 )]
-position = Vector2( 322.647, 241.843 )
-
-[node name="GraplePoint2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 722.85, 408.594 )
-
-[node name="GraplePoint3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 894.635, 17.8298 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 523.259, 284.728 )
 current = true
+zoom = Vector2( 1.2, 1.2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -43,3 +35,14 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1036.11, -500.316 )
 shape = SubResource( 2 )
+
+[node name="Grapples" type="Node" parent="."]
+
+[node name="GraplePoint" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 322.647, 241.843 )
+
+[node name="GraplePoint2" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 722.85, 408.594 )
+
+[node name="GraplePoint3" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 894.635, 17.8298 )
