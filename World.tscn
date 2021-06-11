@@ -3,7 +3,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GraplePoint.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 551.694, 10 )
 
 [node name="World" type="Node2D"]
@@ -14,7 +14,7 @@ extents = Vector2( 551.694, 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2( 509.692, 596.529 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="GraplePoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 322.647, 241.843 )
