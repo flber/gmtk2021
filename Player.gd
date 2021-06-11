@@ -15,17 +15,10 @@ var velocity = Vector2(0,0)		# The velocity of the player (kept over time)
 var chain_velocity := Vector2(0,0)
 var can_jump = false			# Whether the player used their air-jump
 
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.pressed:
-			print(to_local(event.position))
-			var look_vec = get_global_mouse_position() - global_position
-			look_vec = look_vec.normalized()
-			$Chain.shoot(look_vec)
-		else:
-			# We released the mouse -> release()
-			$Chain.release()
+func _should_shoot_at(position):
+	print("hello")
+	var look_vec = position - global_position
+	$Chain.shoot(look_vec)
 
 # This function is called every physics frame
 func _physics_process(_delta: float) -> void:
