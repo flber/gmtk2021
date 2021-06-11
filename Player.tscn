@@ -20,6 +20,3 @@ shape = SubResource( 1 )
 
 [node name="Chain" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0.471405, 0.471436 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
