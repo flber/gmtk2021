@@ -23,7 +23,7 @@ texture = ExtResource( 1 )
 [node name="Button" type="Button" parent="." groups=[
 "grapple_target_buttons",
 ]]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.733333 )
 margin_left = -43.0
 margin_top = -43.0
 margin_right = 43.0

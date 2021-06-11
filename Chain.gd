@@ -43,10 +43,9 @@ func _process(_delta: float) -> void:
 # Every physics frame we update the tip position
 func _physics_process(_delta: float) -> void:
 	$Tip.global_position = tip	# The player might have moved and thus updated the position of the tip -> reset it
-	if to_local(tip).length() < 60 and hooked:
+	if to_local(tip).length_squared() < 60*60 and hooked:
 		flying = false
 		hooked = false
-		print(direction.length())
 	if flying:
 		# `if move_and_collide()` always moves, but returns true if we did collide
 		if $Tip.move_and_collide(direction * SPEED):

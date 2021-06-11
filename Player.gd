@@ -6,8 +6,8 @@ extends KinematicBody2D
 const JUMP_FORCE = 1550			# Force applied on jumping
 const MOVE_SPEED = 500			# Speed to walk with
 const GRAVITY = 60				# Gravity applied every second
-const MAX_SPEED = 1000			# Maximum speed the player is allowed to move
-const FRICTION_AIR = 0.95		# The friction while airborne
+const MAX_SPEED = 2000			# Maximum speed the player is allowed to move
+const FRICTION_AIR = 0.98		# The friction while airborne
 const FRICTION_GROUND = 0.85	# The friction while on the ground
 const CHAIN_PULL = 105
 
