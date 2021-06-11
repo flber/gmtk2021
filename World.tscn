@@ -55,3 +55,15 @@ position = Vector2( 828.884, -467.325 )
 
 [node name="GraplePoint6" parent="Grapples" instance=ExtResource( 4 )]
 position = Vector2( 473.293, -590.928 )
+
+[node name="GraplePoint7" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 445.999, -3354.19 )
+
+[node name="GraplePoint8" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 267.961, -935.131 )
+
+[node name="GraplePoint9" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 795.961, -1145.8 )
+
+[node name="GraplePoint10" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 326.627, -1491.13 )
