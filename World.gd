@@ -44,14 +44,12 @@ func _process(delta):
 	
 	#cam.zoom.x = (1+(-highest.position.y/10000))
 	#cam.zoom.y = (1+(-highest.position.y/10000))
-	
-
 
 func gen_new():
 	var new = scene.instance()
 	new.position.y = highest.position.y + (rng.randf_range(-0.65 * get_viewport().size.y, -0.3 * get_viewport().size.y) )#* (1+(-highest.position.y/10000)))
 	
-	
+
 	while is_equal_approx(new.position.x, highest.position.x):
 		new.position.x = highest.position.x + [rng.randf_range(-1000, -300), rng.randf_range(300, 1000)][randi() % 2]
 		new.position.x = clamp(new.position.x, get_viewport().size.x *-MAX_FROM_CENTER, get_viewport().size.x * MAX_FROM_CENTER)

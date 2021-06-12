@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/post-it.png" type="Texture" id=1]
+[ext_resource path="res://assets/sticky-and-pin.png" type="Texture" id=1]
 [ext_resource path="res://GrapplePoint/Area2D.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -23,7 +23,7 @@ z_index = 6
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.0290442, -0.0317488 )
+position = Vector2( 3.52904, 4.13492 )
 rotation = 0.00189526
 scale = Vector2( 0.28651, 0.285765 )
 texture = ExtResource( 1 )

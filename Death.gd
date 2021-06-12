@@ -8,6 +8,7 @@ onready var score = $VBoxContainer/Score
 
 func _on_NewGameButton_pressed():
 	toggle_pause()
+	GameState.has_died = false
 	get_tree().reload_current_scene()
 
 func _on_QuitToMenuButton_pressed():
@@ -19,9 +20,9 @@ func toggle_pause():
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
 
-
 func _on_Chaser_death():
 	toggle_pause()
+	GameState.has_died = true
 	score.text = "You made it " + str(int(GameState.score/500)) + " meters!" \
 	+"\nBest " + str(int(GameState.best_score/500)) + " meters."
 	# todo ask for input, then save
