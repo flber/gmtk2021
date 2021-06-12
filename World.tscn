@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://TitleScreen/buttons/NewGameButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Death.gd" type="Script" id=9]
 [ext_resource path="res://assets/montserrat_128.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Camera2D.gd" type="Script" id=11]
+[ext_resource path="res://assets/335403__berdusmith__swinging-fishingpool_modified.wav" type="AudioStream" id=12]
+[ext_resource path="res://AudioStreamPlayer.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1705.53, 26.3256 )
@@ -20,6 +23,7 @@ script = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 2, 2 )
+script = ExtResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -191.597, -352.144 )
@@ -168,6 +172,13 @@ shape = SubResource( 1 )
 
 [node name="Chaser" parent="." instance=ExtResource( 4 )]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -8.0
+script = ExtResource( 13 )
+
+[connection signal="start_dash" from="Player" to="Camera2D" method="_on_Player_start_dash"]
+[connection signal="start_dash" from="Player" to="AudioStreamPlayer" method="_on_Player_start_dash"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/ResumeButton" to="Player/Overlays/Pause" method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Pause" method="_on_QuitToMenuButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/NewGameButton" to="Player/Overlays/Death" method="_on_NewGameButton_pressed"]

@@ -89,5 +89,5 @@ func _physics_process(delta: float) -> void:
 
 func shaking(delta: float) -> bool:
 	# todo fix this because get_last_mouse_speed could return the same speed multiple times if the user stops moving the mouse
-	
 	return Input.get_last_mouse_speed().length() > 4000 and Input.is_mouse_button_pressed(1)
+	#return Input.is_mouse_button_pressed(2) and Input.is_mouse_button_pressed(1)

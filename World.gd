@@ -74,3 +74,4 @@ func _physics_process(delta):
 
 func on_dash():
 	last_dash_at = OS.get_system_time_msecs()
+	
