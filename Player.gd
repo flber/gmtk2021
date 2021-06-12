@@ -51,7 +51,7 @@ func _physics_process(_delta: float) -> void:
 	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 	
 	
-	if $Chain.hooked and $Chain.len_squared() > $Chain.old_len_sq and $Chain.len_squared() < 300*300 and velocity.length_squared() > 100*100:
+	if $Chain.hooked and $Chain.len_squared() > $Chain.old_len_sq and $Chain.len_squared() < 200*200 and velocity.length_squared() > 100*100:
 		$Chain.release()
 
 	
