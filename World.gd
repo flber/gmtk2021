@@ -16,9 +16,8 @@ var last_dash_at = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	rand_seed(17)
-	rng = RandomNumberGenerator.new()
-	
+	rand_seed(hash(OS.get_system_time_msecs()))
+	GameState.score = 0
 	
 	cam.position.x = 0
 	
@@ -30,7 +29,7 @@ func _ready():
 	
 	self.add_child(highest)
 	var btn = highest.get_node("Area2D")
-	btn.connect("clicked_or_dragged_on", $Player, "_should_shoot_at", [btn.get_parent().position])
+	btn.connect("clicked_or_dragged_on", $Player, "_should_shoot_at", [highest.to_global(highest.get_node("Coli").position)])
 	
 	
 	$Player.connect("start_dash", self, "on_dash")
@@ -56,7 +55,7 @@ func gen_new():
 		new.position.x = clamp(new.position.x, get_viewport().size.x *-MAX_FROM_CENTER, get_viewport().size.x * MAX_FROM_CENTER)
 	
 	var btn = new.get_node("Area2D")
-	btn.connect("clicked_or_dragged_on", $Player, "_should_shoot_at", [btn.get_parent().position])
+	btn.connect("clicked_or_dragged_on", $Player, "_should_shoot_at", [new.to_global(new.get_node("Coli").position)])
 	
 	self.add_child(new)
 	highest = new
@@ -66,6 +65,7 @@ func gen_new():
 func _physics_process(delta):
 	
 	GameState.score = max(GameState.score, -player.position.y)
+	GameState.best_score = max(GameState.score, GameState.best_score)
 	
 	$Lbound.position.y = player.position.y
 	$Rbound.position.y = player.position.y

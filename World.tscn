@@ -28,7 +28,7 @@ zoom = Vector2( 2, 2 )
 script = ExtResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -207.039, 0 )
+position = Vector2( -645.426, -107.635 )
 z_index = 5
 
 [node name="Overlays" type="CanvasLayer" parent="Player"]
@@ -140,16 +140,24 @@ custom_constants/shadow_offset_y = 3
 text = "But you made it __ levels!
 "
 
-[node name="NewGameButton" parent="Player/Overlays/Death/VBoxContainer" instance=ExtResource( 8 )]
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/Overlays/Death/VBoxContainer"]
 margin_top = 322.0
 margin_right = 904.0
-margin_bottom = 382.0
+margin_bottom = 446.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/Overlays/Death/VBoxContainer/HBoxContainer"]
+margin_right = 360.0
+margin_bottom = 124.0
+
+[node name="NewGameButton" parent="Player/Overlays/Death/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+margin_right = 360.0
+margin_bottom = 60.0
 script = null
 
-[node name="QuitToMenuButton" parent="Player/Overlays/Death/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 386.0
-margin_right = 904.0
-margin_bottom = 446.0
+[node name="QuitToMenuButton" parent="Player/Overlays/Death/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 64.0
+margin_right = 360.0
+margin_bottom = 124.0
 
 [node name="Set" parent="." instance=ExtResource( 14 )]
 position = Vector2( 0, 1423.06 )
@@ -200,6 +208,6 @@ script = ExtResource( 13 )
 [connection signal="start_dash" from="Player" to="Camera2D" method="_on_Player_start_dash"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/ResumeButton" to="Player/Overlays/Pause" method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Pause" method="_on_QuitToMenuButton_pressed"]
-[connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/NewGameButton" to="Player/Overlays/Death" method="_on_NewGameButton_pressed"]
-[connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Death" method="_on_QuitToMenuButton_pressed"]
+[connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/HBoxContainer/VBoxContainer/NewGameButton" to="Player/Overlays/Death" method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/HBoxContainer/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Death" method="_on_QuitToMenuButton_pressed"]
 [connection signal="death" from="Chaser" to="Player/Overlays/Death" method="_on_Chaser_death"]
