@@ -6,18 +6,18 @@ extends KinematicBody2D
 const JUMP_FORCE = 1550			# Force applied on jumping
 const MOVE_SPEED = 500			# Speed to walk with
 const GRAVITY = 60				# Gravity applied every second
-const MAX_SPEED = 1000			# Maximum speed the player is allowed to move
-const FRICTION_AIR = 0.95		# The friction while airborne
-const FRICTION_GROUND = 0.85	# The friction while on the ground
+const MAX_SPEED = 2000			# Maximum speed the player is allowed to move
+const FRICTION_AIR = 0.98		# The friction while airborne
+const FRICTION_GROUND = 0.85
 const CHAIN_PULL = 105
 
 var velocity = Vector2(0,0)		# The velocity of the player (kept over time)
 var chain_velocity := Vector2(0,0)
 var can_jump = false			# Whether the player used their air-jump
 
+
 func _should_shoot_at(position):
 	$Chain.release()
-	print("hello")
 	var look_vec = position - global_position
 	$Chain.shoot(look_vec)
 
@@ -37,36 +37,30 @@ func _physics_process(_delta: float) -> void:
 		else:
 			# Pulling up is stronger
 			chain_velocity.y *= 1.65
+
+		if $Chain.len_squared() < 150:
+			chain_velocity *= 1.2
+
 	else:
 		# Not hooked -> no chain velocity
 		chain_velocity = Vector2(0,0)
 	velocity += chain_velocity
 
 	velocity = move_and_slide(velocity, Vector2.UP)	# Actually apply all the forces
-	# ^ This is done so we don't build up walk speed over time
 
 	# Manage friction and refresh jump and stuff
 	velocity.y = clamp(velocity.y, -MAX_SPEED, MAX_SPEED)	# Make sure we are in our limits
 	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
-	var grounded = is_on_floor()
-	if grounded:
-		velocity.x *= FRICTION_GROUND	# Apply friction only on x (we are not moving on y anyway)
-		can_jump = true 				# We refresh our air-jump
-		if velocity.y >= 5:		# Keep the y-velocity small such that
-			velocity.y = 5		# gravity doesn't make this number huge
-	elif is_on_ceiling() and velocity.y <= -5:	# Same on ceilings
-		velocity.y = -5
+	
+	
+	if $Chain.hooked and $Chain.len_squared() > $Chain.old_len_sq and $Chain.len_squared() < 250*250 \
+	and velocity.length_squared() > 200*200 and OS.get_ticks_msec() - $Chain.hooked_time  > 150:
+		$Chain.release()
 
-	# Apply air friction
-	if !grounded:
-		velocity.x *= FRICTION_AIR
-		if velocity.y > 0:
-			velocity.y *= FRICTION_AIR
-
-	# Jumping
-	if Input.is_action_just_pressed("jump"):
-		if grounded:
-			velocity.y = -JUMP_FORCE	# Apply the jump-force
-		elif can_jump:
-			can_jump = false	# Used air-jump
-			velocity.y = -JUMP_FORCE
+	
+	
+	if is_on_floor():
+		velocity.x *= FRICTION_GROUND
+	else:
+		velocity *= FRICTION_AIR
+	
