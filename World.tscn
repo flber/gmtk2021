@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World.gd" type="Script" id=2]
 [ext_resource path="res://Pause.gd" type="Script" id=3]
+[ext_resource path="res://Chaser/Chaser.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/montserrat_48.tres" type="DynamicFont" id=5]
 [ext_resource path="res://scenes/ResumeButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://TitleScreen/buttons/QuitToMenuButton.tscn" type="PackedScene" id=7]
@@ -164,6 +165,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rbound"]
 shape = SubResource( 1 )
+
+[node name="Chaser" parent="." instance=ExtResource( 4 )]
 
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/ResumeButton" to="Player/Overlays/Pause" method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Pause" method="_on_QuitToMenuButton_pressed"]

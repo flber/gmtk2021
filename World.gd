@@ -12,6 +12,7 @@ var highest = scene.instance()
 
 var rng = RandomNumberGenerator.new()
 
+var last_dash_at = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +33,9 @@ func _ready():
 	btn.connect("clicked_or_dragged_on", $Player, "_should_shoot_at", [btn.get_parent().position])
 	
 	
+	$Player.connect("start_dash", self, "on_dash")
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var gen_new = false
@@ -39,14 +43,14 @@ func _process(delta):
 	while highest.position.y + get_viewport().size.y * 2 > player.position.y:
 		gen_new()
 	
-	cam.zoom.x = (1+(-highest.position.y/10000))
-	cam.zoom.y = (1+(-highest.position.y/10000))
+	#cam.zoom.x = (1+(-highest.position.y/10000))
+	#cam.zoom.y = (1+(-highest.position.y/10000))
 	
 
 
 func gen_new():
 	var new = scene.instance()
-	new.position.y = highest.position.y + (rng.randf_range(-0.65 * get_viewport().size.y, -0.3 * get_viewport().size.y) * (1+(-highest.position.y/10000)))
+	new.position.y = highest.position.y + (rng.randf_range(-0.65 * get_viewport().size.y, -0.3 * get_viewport().size.y) )#* (1+(-highest.position.y/10000)))
 	
 	
 	while is_equal_approx(new.position.x, highest.position.x):
@@ -64,3 +68,9 @@ func gen_new():
 func _physics_process(delta):
 	$Lbound.position.y = player.position.y
 	$Rbound.position.y = player.position.y
+	
+	if !(last_dash_at + (3 * 1000) > OS.get_system_time_msecs()):
+		$Chaser.position.y = min(lerp($Chaser.position.y, player.position.y + get_viewport().size.y*2, 0.6), $Chaser.position.y)
+
+func on_dash():
+	last_dash_at = OS.get_system_time_msecs()
