@@ -18,6 +18,7 @@ const SPEED = 50	# The speed with which the chain moves
 var flying = false	# Whether the chain is moving through the air
 var hooked = false	# Whether the chain has connected to a wall
 
+onready var hooked_time = OS.get_ticks_msec()
 
 var old_len_sq = 100000
 
@@ -53,6 +54,7 @@ func _physics_process(_delta: float) -> void:
 		if $Tip.move_and_collide(direction * SPEED):
 			hooked = true	# Got something!
 			flying = false	# Not flying anymore
+			hooked_time = OS.get_ticks_msec()
 	tip = $Tip.global_position	# set `tip` as starting position for next frame
 	
 	
