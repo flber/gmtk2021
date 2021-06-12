@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Chain/Chain.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/barney.png" type="Texture" id=2]
 [ext_resource path="res://Player/Player.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -13,9 +13,12 @@ collision_layer = 2
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.263916, 0.279663 )
+scale = Vector2( 0.211706, 0.211706 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Chain" parent="." instance=ExtResource( 1 )]
+z_index = -1
