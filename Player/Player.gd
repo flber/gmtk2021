@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 
 	if $Chain.hooked:
 		# `to_local($Chain.tip).normalized()` is the direction that the chain is pulling
-		chain_velocity = to_local($Chain.tip).normalized() * CHAIN_PULL
+		chain_velocity = to_local($Chain.tip).normalized() * CHAIN_PULL * (1+(-position.y/10000))
 		if chain_velocity.y > 0:
 			# Pulling down isn't as strong
 			chain_velocity.y *= 0.55

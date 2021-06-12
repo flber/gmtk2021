@@ -21,6 +21,7 @@ current = true
 zoom = Vector2( 2, 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -191.597, -352.144 )
 
 [node name="Overlays" type="CanvasLayer" parent="Player"]
 layer = 100
@@ -146,7 +147,6 @@ margin_bottom = 446.0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bbound"]
-position = Vector2( 0, 596.529 )
 shape = SubResource( 1 )
 
 [node name="Lbound" type="StaticBody2D" parent="."]
