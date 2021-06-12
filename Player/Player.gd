@@ -21,6 +21,7 @@ func _input(event):
 		$Chain.release()
 
 func _should_shoot_at(position):
+	print("hi")
 	$Chain.release()
 	var look_vec = position - global_position
 	$Chain.shoot(look_vec)
