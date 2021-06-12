@@ -6,15 +6,19 @@ extends KinematicBody2D
 const JUMP_FORCE = 1550			# Force applied on jumping
 const MOVE_SPEED = 500			# Speed to walk with
 const GRAVITY = 60				# Gravity applied every second
-const MAX_SPEED = 2000			# Maximum speed the player is allowed to move
+const MAX_SPEED = 5000			# Maximum speed the player is allowed to move
 const FRICTION_AIR = 0.98		# The friction while airborne
 const FRICTION_GROUND = 0.85
-const CHAIN_PULL = 105
+const CHAIN_PULL = 125
 
 var velocity = Vector2(0,0)		# The velocity of the player (kept over time)
 var chain_velocity := Vector2(0,0)
 var can_jump = false			# Whether the player used their air-jump
 
+func _input(event):
+	
+	if event is InputEventMouseButton and !event.pressed:
+		$Chain.release()
 
 func _should_shoot_at(position):
 	$Chain.release()
@@ -46,16 +50,17 @@ func _physics_process(_delta: float) -> void:
 		chain_velocity = Vector2(0,0)
 	velocity += chain_velocity
 
+	
 	velocity = move_and_slide(velocity, Vector2.UP)	# Actually apply all the forces
 
-	# Manage friction and refresh jump and stuff
-	velocity.y = clamp(velocity.y, -MAX_SPEED, MAX_SPEED)	# Make sure we are in our limits
+
+	velocity.y = min(velocity.y, MAX_SPEED)	# Make sure we are in our limits
 	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 	
 	
-	if $Chain.hooked and $Chain.len_squared() > $Chain.old_len_sq and $Chain.len_squared() < 250*250 \
-	and velocity.length_squared() > 200*200 and OS.get_ticks_msec() - $Chain.hooked_time  > 150:
-		$Chain.release()
+	#if $Chain.hooked and $Chain.len_squared() > $Chain.old_len_sq and $Chain.len_squared() < 250*250 \
+	#and velocity.length_squared() > 200*200 and OS.get_ticks_msec() - $Chain.hooked_time  > 150:
+	#	$Chain.release()
 
 	
 	

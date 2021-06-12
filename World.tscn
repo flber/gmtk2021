@@ -15,17 +15,19 @@
 extents = Vector2( 1705.53, 26.3256 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 2856.57 )
+extents = Vector2( 1705.53, 26.3256 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 523.259, 284.728 )
 current = true
-zoom = Vector2( 1.2, 1.2 )
+zoom = Vector2( 2, 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+
+[node name="Bbound" type="StaticBody2D" parent="."]
+collision_mask = 2
 
 [node name="Overlays" type="CanvasLayer" parent="Player"]
 layer = 100
@@ -155,8 +157,24 @@ shape = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 4.65039, -473.437 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bbound"]
+position = Vector2( 0, 596.529 )
+shape = SubResource( 2 )
+
+[node name="Lbound" type="StaticBody2D" parent="."]
+position = Vector2( -720, 0 )
+rotation = 1.5708
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lbound"]
+shape = SubResource( 2 )
+
+[node name="Rbound" type="StaticBody2D" parent="."]
+position = Vector2( 720, 0 )
+rotation = 1.5708
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rbound"]
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
