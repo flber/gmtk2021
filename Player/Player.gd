@@ -23,13 +23,11 @@ func _should_shoot_at(position):
 
 # This function is called every physics frame
 func _physics_process(_delta: float) -> void:
-	# Walking
-	var walk = (Input.get_action_strength("right") - Input.get_action_strength("left")) * MOVE_SPEED
-
 	# Falling
 	velocity.y += GRAVITY
 
 	# Hook physics
+
 	if $Chain.hooked:
 		# `to_local($Chain.tip).normalized()` is the direction that the chain is pulling
 		chain_velocity = to_local($Chain.tip).normalized() * CHAIN_PULL
@@ -39,19 +37,12 @@ func _physics_process(_delta: float) -> void:
 		else:
 			# Pulling up is stronger
 			chain_velocity.y *= 1.65
-		if sign(chain_velocity.x) != sign(walk):
-			# if we are trying to walk in a different
-			# direction than the chain is pulling
-			# reduce its pull
-			chain_velocity.x *= 0.7
 	else:
 		# Not hooked -> no chain velocity
 		chain_velocity = Vector2(0,0)
 	velocity += chain_velocity
 
-	velocity.x += walk		# apply the walking
-	move_and_slide(velocity, Vector2.UP)	# Actually apply all the forces
-	velocity.x -= walk		# take away the walk speed again
+	velocity = move_and_slide(velocity, Vector2.UP)	# Actually apply all the forces
 	# ^ This is done so we don't build up walk speed over time
 
 	# Manage friction and refresh jump and stuff

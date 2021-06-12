@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hook.png-75e1f4fcaca6e01ae9951d13bcfec6f3.stex"
+path="res://.import/arm.png-d0188e57afd32a6e104c1ec46c733da9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hook.png"
-dest_files=[ "res://.import/hook.png-75e1f4fcaca6e01ae9951d13bcfec6f3.stex" ]
+source_file="res://assets/arm.png"
+dest_files=[ "res://.import/arm.png-d0188e57afd32a6e104c1ec46c733da9.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
