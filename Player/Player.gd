@@ -27,6 +27,7 @@ func _physics_process(_delta: float) -> void:
 	velocity.y += GRAVITY
 
 	# Hook physics
+
 	if $Chain.hooked:
 		# `to_local($Chain.tip).normalized()` is the direction that the chain is pulling
 		chain_velocity = to_local($Chain.tip).normalized() * CHAIN_PULL
@@ -36,9 +37,10 @@ func _physics_process(_delta: float) -> void:
 		else:
 			# Pulling up is stronger
 			chain_velocity.y *= 1.65
-		
+
 		if $Chain.len_squared() < 150:
 			chain_velocity *= 1.2
+
 	else:
 		# Not hooked -> no chain velocity
 		chain_velocity = Vector2(0,0)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World.gd" type="Script" id=2]
-[ext_resource path="res://GraplePoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GrapplePoint/GraplePoint.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1705.53, 26.3256 )
@@ -12,6 +12,11 @@ extents = Vector2( 10, 2856.57 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 523.259, 284.728 )
+current = true
+zoom = Vector2( 1.2, 1.2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -33,34 +38,34 @@ shape = SubResource( 2 )
 
 [node name="Grapples" type="Node" parent="."]
 
-[node name="GraplePoint" parent="Grapples" instance=ExtResource( 4 )]
+[node name="GraplePoint" parent="Grapples" instance=ExtResource( 3 )]
 position = Vector2( 184.999, -285.668 )
 
-[node name="GraplePoint2" parent="Grapples" instance=ExtResource( 4 )]
+[node name="GraplePoint1" parent="Grapples" instance=ExtResource( 3 )]
+position = Vector2( 685.757, -609.562 )
+
+[node name="GraplePoint2" parent="Grapples" instance=ExtResource( 3 )]
 position = Vector2( 722.85, 408.594 )
 
-[node name="GraplePoint3" parent="Grapples" instance=ExtResource( 4 )]
-position = Vector2( 894.635, 17.8298 )
-
-[node name="GraplePoint4" parent="Grapples" instance=ExtResource( 4 )]
+[node name="GraplePoint4" parent="Grapples" instance=ExtResource( 3 )]
 position = Vector2( 256.765, -1137.88 )
 
-[node name="GraplePoint5" parent="Grapples" instance=ExtResource( 4 )]
+[node name="GraplePoint5" parent="Grapples" instance=ExtResource( 3 )]
 position = Vector2( 837.117, -1438.36 )
 
-[node name="GraplePoint6" parent="Grapples" instance=ExtResource( 4 )]
-position = Vector2( 662.431, -648.305 )
+[node name="GraplePoint6" parent="Grapples" instance=ExtResource( 3 )]
+position = Vector2( 338.797, -696.251 )
 
-[node name="GraplePoint7" parent="Grapples" instance=ExtResource( 4 )]
-position = Vector2( 445.999, -3354.19 )
+[node name="GraplePoint5" parent="Grapples" instance=ExtResource( 3 )]
+position = Vector2( 834.446, 85.4347 )
 
-[node name="GraplePoint8" parent="Grapples" instance=ExtResource( 4 )]
+[node name="GraplePoint8" parent="Grapples" instance=ExtResource( 3 )]
 position = Vector2( 790.277, -2500.06 )
 
-[node name="GraplePoint9" parent="Grapples" instance=ExtResource( 4 )]
+[node name="GraplePoint9" parent="Grapples" instance=ExtResource( 3 )]
 position = Vector2( 453.123, -1870.11 )
 
-[node name="GraplePoint10" parent="Grapples" instance=ExtResource( 4 )]
+[node name="GraplePoint10" parent="Grapples" instance=ExtResource( 3 )]
 position = Vector2( 212.068, -2827.75 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://gp.png" type="Texture" id=1]
-[ext_resource path="res://GPButton.gd" type="Script" id=2]
+[ext_resource path="res://assets/gp.png" type="Texture" id=1]
+[ext_resource path="res://GrapplePoint/GPButton.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.70839
