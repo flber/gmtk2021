@@ -1,5 +1,5 @@
 extends Area2D
-
+signal death
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_Chaser_body_shape_entered(body_id, body, body_shape, local_shape):
-	print("dead")
+	emit_signal("death")
 
 func _physics_process(delta):
 	position.y -= 6

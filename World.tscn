@@ -15,7 +15,7 @@
 [ext_resource path="res://AudioStreamPlayer.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1705.53, 26.3256 )
+extents = Vector2( 1705.53, 25 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
@@ -26,7 +26,7 @@ zoom = Vector2( 2, 2 )
 script = ExtResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -191.597, -352.144 )
+position = Vector2( -207.039, 0 )
 
 [node name="Overlays" type="CanvasLayer" parent="Player"]
 layer = 100
@@ -152,6 +152,7 @@ margin_bottom = 446.0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bbound"]
+position = Vector2( 0, 60 )
 shape = SubResource( 1 )
 
 [node name="Lbound" type="StaticBody2D" parent="."]
@@ -183,3 +184,4 @@ script = ExtResource( 13 )
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Pause" method="_on_QuitToMenuButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/NewGameButton" to="Player/Overlays/Death" method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Death" method="_on_QuitToMenuButton_pressed"]
+[connection signal="death" from="Chaser" to="Player/Overlays/Death" method="_on_Chaser_death"]

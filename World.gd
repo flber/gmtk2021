@@ -66,6 +66,9 @@ func gen_new():
 
 
 func _physics_process(delta):
+	
+	GameState.score = max(GameState.score, -player.position.y)
+	
 	$Lbound.position.y = player.position.y
 	$Rbound.position.y = player.position.y
 	
