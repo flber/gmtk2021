@@ -1,7 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World.gd" type="Script" id=2]
+[ext_resource path="res://Pause.gd" type="Script" id=3]
+[ext_resource path="res://GrapplePoint/GraplePoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/montserrat_48.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/ResumeButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://TitleScreen/buttons/QuitToMenuButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://TitleScreen/buttons/NewGameButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Death.gd" type="Script" id=9]
+[ext_resource path="res://assets/montserrat_128.tres" type="DynamicFont" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1705.53, 26.3256 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 1705.53, 26.3256 )
@@ -17,6 +28,134 @@ zoom = Vector2( 2, 2 )
 
 [node name="Bbound" type="StaticBody2D" parent="."]
 collision_mask = 2
+
+[node name="Overlays" type="CanvasLayer" parent="Player"]
+layer = 100
+
+[node name="Pause" type="Control" parent="Player/Overlays"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overlay" type="ColorRect" parent="Player/Overlays/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.498039 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/Overlays/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 60.0
+margin_top = 60.0
+margin_right = -60.0
+margin_bottom = -60.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Player/Overlays/Pause/VBoxContainer"]
+margin_top = 97.0
+margin_right = 904.0
+margin_bottom = 254.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 1, 0.384314, 0.384314, 1 )
+custom_colors/font_color_shadow = Color( 0.713726, 0.45098, 0.45098, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "Paused"
+
+[node name="ResumeButton" parent="Player/Overlays/Pause/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 258.0
+margin_right = 904.0
+margin_bottom = 318.0
+
+[node name="QuitToMenuButton" parent="Player/Overlays/Pause/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 322.0
+margin_right = 904.0
+margin_bottom = 382.0
+
+[node name="Death" type="Control" parent="Player/Overlays"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overlay" type="ColorRect" parent="Player/Overlays/Death"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.498039 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/Overlays/Death"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 60.0
+margin_top = 60.0
+margin_right = -60.0
+margin_bottom = -60.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YouDied" type="Label" parent="Player/Overlays/Death/VBoxContainer"]
+margin_top = 34.0
+margin_right = 904.0
+margin_bottom = 191.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 1, 0.384314, 0.384314, 1 )
+custom_colors/font_color_shadow = Color( 0.713726, 0.45098, 0.45098, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "You Died :("
+
+[node name="Score" type="Label" parent="Player/Overlays/Death/VBoxContainer"]
+margin_top = 195.0
+margin_right = 904.0
+margin_bottom = 318.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.384314, 0.678431, 0.92549, 1 )
+custom_colors/font_color_shadow = Color( 0.290196, 0.513726, 0.698039, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "But you made it __ levels!
+"
+
+[node name="NewGameButton" parent="Player/Overlays/Death/VBoxContainer" instance=ExtResource( 8 )]
+margin_top = 322.0
+margin_right = 904.0
+margin_bottom = 382.0
+script = null
+
+[node name="QuitToMenuButton" parent="Player/Overlays/Death/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 386.0
+margin_right = 904.0
+margin_bottom = 446.0
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 509.692, 596.529 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bbound"]
 position = Vector2( 0, 596.529 )
@@ -37,3 +176,49 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rbound"]
 shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1036.11, -500.316 )
+shape = SubResource( 2 )
+
+[node name="Grapples" type="Node" parent="."]
+
+[node name="GraplePoint" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 184.999, -285.668 )
+
+[node name="GraplePoint1" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 685.757, -609.562 )
+
+[node name="GraplePoint2" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 722.85, 408.594 )
+
+[node name="GraplePoint4" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 256.765, -1137.88 )
+
+[node name="GraplePoint5" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 837.117, -1438.36 )
+
+[node name="GraplePoint6" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 338.797, -696.251 )
+
+[node name="GraplePoint5" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 834.446, 85.4347 )
+
+[node name="GraplePoint8" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 790.277, -2500.06 )
+
+[node name="GraplePoint9" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 453.123, -1870.11 )
+
+[node name="GraplePoint10" parent="Grapples" instance=ExtResource( 4 )]
+position = Vector2( 212.068, -2827.75 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 523.259, 284.728 )
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
+[connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/ResumeButton" to="Player/Overlays/Pause" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Pause" method="_on_QuitToMenuButton_pressed"]
+[connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/NewGameButton" to="Player/Overlays/Death" method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Death" method="_on_QuitToMenuButton_pressed"]
