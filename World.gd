@@ -22,12 +22,14 @@ func _ready():
 	cam.position.x = 0
 	
 	
-	$Lbound.position.x = get_viewport().size.x *-0.5 + 200
-	$Rbound.position.x = get_viewport().size.x *0.5 - 200
+	$Lbound.position.x = get_viewport().size.x *-0.4
+	$Rbound.position.x = get_viewport().size.x *0.4
+	
+	highest.position.y += 150
 	
 	self.add_child(highest)
-	var btn = highest.get_node("Button")
-	btn.connect("button_down", $Player, "_should_shoot_at", [btn.get_parent().position])
+	var btn = highest.get_node("Area2D")
+	btn.connect("clicked_or_dragged_on", $Player, "_should_shoot_at", [btn.get_parent().position])
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,8 +49,8 @@ func gen_new():
 		new.position.x = highest.position.x + [rng.randf_range(-900, -300), rng.randf_range(300, 900)][randi() % 2]
 		new.position.x = clamp(new.position.x, get_viewport().size.x *-MAX_FROM_CENTER, get_viewport().size.x * MAX_FROM_CENTER)
 	
-	var btn = new.get_node("Button")
-	btn.connect("button_down", $Player, "_should_shoot_at", [btn.get_parent().position])
+	var btn = new.get_node("Area2D")
+	btn.connect("clicked_or_dragged_on", $Player, "_should_shoot_at", [btn.get_parent().position])
 	
 	self.add_child(new)
 	highest = new

@@ -21,9 +21,10 @@ func _input(event):
 		$Chain.release()
 
 func _should_shoot_at(position):
-	$Chain.release()
-	var look_vec = position - global_position
-	$Chain.shoot(look_vec)
+	if !$Chain.flying and !$Chain.hooked and Input.is_mouse_button_pressed(1):
+		$Chain.release()
+		var look_vec = position - global_position
+		$Chain.shoot(look_vec)
 
 # This function is called every physics frame
 func _physics_process(_delta: float) -> void:
