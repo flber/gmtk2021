@@ -24,10 +24,10 @@ texture = ExtResource( 1 )
 "grapple_target_buttons",
 ]]
 modulate = Color( 1, 1, 1, 0.733333 )
-margin_left = -43.0
-margin_top = -43.0
-margin_right = 43.0
-margin_bottom = 43.0
+margin_left = -56.0
+margin_top = -56.0
+margin_right = 56.0
+margin_bottom = 56.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
