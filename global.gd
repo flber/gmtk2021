@@ -21,6 +21,5 @@ func _ready():
 
 
 func to_res_independant(val):
-	print(get_viewport().size)
 	return val
 	
