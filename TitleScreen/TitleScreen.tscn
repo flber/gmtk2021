@@ -89,7 +89,7 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.960784, 0.65098, 0.360784, 1 )
 custom_colors/font_color_shadow = Color( 0.666667, 0.6, 0.298039, 1 )
-text = "Version Not.Really.Sure"
+text = "0.5.0"
 
 [node name="FadeIn" parent="." instance=ExtResource( 7 )]
 visible = false
