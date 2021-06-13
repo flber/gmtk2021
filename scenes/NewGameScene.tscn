@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/montserrat_48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/montserrat_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/Username.gd" type="Script" id=3]
+
+[node name="NewGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 288.0
+margin_top = 249.0
+margin_right = 735.0
+margin_bottom = 350.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 447.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.886275, 0.352941, 0.352941, 1 )
+custom_colors/font_color_shadow = Color( 0.835294, 0.635294, 0.290196, 1 )
+custom_constants/shadow_offset_y = 3
+text = "New Game Scene"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 447.0
+margin_bottom = 101.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.886275, 0.352941, 0.352941, 1 )
+custom_colors/font_color_hover = Color( 0.662745, 0.262745, 0.262745, 1 )
+custom_colors/font_color_pressed = Color( 0.886275, 0.352941, 0.352941, 1 )
+text = "Back"
+flat = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
