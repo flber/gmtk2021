@@ -104,7 +104,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player/Overlays/Death"]
+[node name="Full" type="VBoxContainer" parent="Player/Overlays/Death"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 60.0
@@ -116,10 +116,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="YouDied" type="Label" parent="Player/Overlays/Death/VBoxContainer"]
-margin_top = 34.0
+[node name="YouDied" type="Label" parent="Player/Overlays/Death/Full"]
+margin_top = 25.0
 margin_right = 904.0
-margin_bottom = 191.0
+margin_bottom = 182.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 1, 0.384314, 0.384314, 1 )
@@ -128,10 +128,18 @@ custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
 text = "You Died :("
 
-[node name="Score" type="Label" parent="Player/Overlays/Death/VBoxContainer"]
-margin_top = 195.0
+[node name="UI" type="HBoxContainer" parent="Player/Overlays/Death/Full"]
+margin_top = 186.0
 margin_right = 904.0
-margin_bottom = 318.0
+margin_bottom = 455.0
+
+[node name="LevelButtons" type="VBoxContainer" parent="Player/Overlays/Death/Full/UI"]
+margin_right = 647.0
+margin_bottom = 269.0
+
+[node name="Score" type="Label" parent="Player/Overlays/Death/Full/UI/LevelButtons"]
+margin_right = 647.0
+margin_bottom = 123.0
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.384314, 0.678431, 0.92549, 1 )
 custom_colors/font_color_shadow = Color( 0.290196, 0.513726, 0.698039, 1 )
@@ -140,24 +148,59 @@ custom_constants/shadow_offset_y = 3
 text = "But you made it __ levels!
 "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Player/Overlays/Death/VBoxContainer"]
-margin_top = 322.0
-margin_right = 904.0
-margin_bottom = 446.0
+[node name="Spacer" type="Label" parent="Player/Overlays/Death/Full/UI/LevelButtons"]
+margin_top = 127.0
+margin_right = 647.0
+margin_bottom = 141.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player/Overlays/Death/VBoxContainer/HBoxContainer"]
-margin_right = 360.0
-margin_bottom = 124.0
+[node name="Buttons" type="VBoxContainer" parent="Player/Overlays/Death/Full/UI/LevelButtons"]
+margin_top = 145.0
+margin_right = 647.0
+margin_bottom = 269.0
 
-[node name="NewGameButton" parent="Player/Overlays/Death/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
-margin_right = 360.0
+[node name="NewGameButton" parent="Player/Overlays/Death/Full/UI/LevelButtons/Buttons" instance=ExtResource( 8 )]
+margin_right = 647.0
 margin_bottom = 60.0
 script = null
 
-[node name="QuitToMenuButton" parent="Player/Overlays/Death/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
+[node name="QuitToMenuButton" parent="Player/Overlays/Death/Full/UI/LevelButtons/Buttons" instance=ExtResource( 7 )]
 margin_top = 64.0
-margin_right = 360.0
+margin_right = 647.0
 margin_bottom = 124.0
+
+[node name="Spacer" type="Label" parent="Player/Overlays/Death/Full/UI"]
+margin_left = 651.0
+margin_top = 127.0
+margin_right = 699.0
+margin_bottom = 141.0
+text = "            "
+
+[node name="HighScores" type="VBoxContainer" parent="Player/Overlays/Death/Full/UI"]
+margin_left = 703.0
+margin_right = 890.0
+margin_bottom = 269.0
+alignment = 2
+
+[node name="Score1" type="Label" parent="Player/Overlays/Death/Full/UI/HighScores"]
+margin_top = 81.0
+margin_right = 187.0
+margin_bottom = 141.0
+custom_fonts/font = ExtResource( 5 )
+text = "Score 1"
+
+[node name="Score2" type="Label" parent="Player/Overlays/Death/Full/UI/HighScores"]
+margin_top = 145.0
+margin_right = 187.0
+margin_bottom = 205.0
+custom_fonts/font = ExtResource( 5 )
+text = "Score 2"
+
+[node name="Score3" type="Label" parent="Player/Overlays/Death/Full/UI/HighScores"]
+margin_top = 209.0
+margin_right = 187.0
+margin_bottom = 269.0
+custom_fonts/font = ExtResource( 5 )
+text = "Score 3"
 
 [node name="Set" parent="." instance=ExtResource( 14 )]
 position = Vector2( 0, 1423.06 )
@@ -208,6 +251,6 @@ script = ExtResource( 13 )
 [connection signal="start_dash" from="Player" to="Camera2D" method="_on_Player_start_dash"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/ResumeButton" to="Player/Overlays/Pause" method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Pause" method="_on_QuitToMenuButton_pressed"]
-[connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/HBoxContainer/VBoxContainer/NewGameButton" to="Player/Overlays/Death" method="_on_NewGameButton_pressed"]
-[connection signal="pressed" from="Player/Overlays/Death/VBoxContainer/HBoxContainer/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Death" method="_on_QuitToMenuButton_pressed"]
+[connection signal="pressed" from="Player/Overlays/Death/Full/UI/LevelButtons/Buttons/NewGameButton" to="Player/Overlays/Death" method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="Player/Overlays/Death/Full/UI/LevelButtons/Buttons/QuitToMenuButton" to="Player/Overlays/Death" method="_on_QuitToMenuButton_pressed"]
 [connection signal="death" from="Chaser" to="Player/Overlays/Death" method="_on_Chaser_death"]
