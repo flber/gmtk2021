@@ -25,6 +25,7 @@ extents = Vector2( 1705.53, 25 )
 script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
 current = true
 zoom = Vector2( 2, 2 )
 script = ExtResource( 11 )
@@ -257,15 +258,14 @@ position = Vector2( 0, 11401.9 )
 z_index = 1000
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 12 )
-volume_db = -8.0
 script = ExtResource( 13 )
 
-[connection signal="start_dash" from="Player" to="AudioStreamPlayer" method="_on_Player_start_dash"]
 [connection signal="death" from="Chaser" to="Player/Overlays/Death" method="_on_Chaser_death"]
+[connection signal="start_dash" from="Player" to="AudioStreamPlayer" method="_on_Player_start_dash"]
 [connection signal="start_dash" from="Player" to="Camera2D" method="_on_Player_start_dash"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/ResumeButton" to="Player/Overlays/Pause" method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Pause" method="_on_QuitToMenuButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Death/Full/UI/LevelButtons/Buttons/NewGameButton" to="Player/Overlays/Death" method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Death/Full/UI/LevelButtons/Buttons/QuitToMenuButton" to="Player/Overlays/Death" method="_on_QuitToMenuButton_pressed"]
-[connection signal="death" from="Chaser" to="Player/Overlays/Death" method="_on_Chaser_death"]

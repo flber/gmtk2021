@@ -6,7 +6,7 @@ var has_died = false
 var best_score = 0
 var count = 0
 var textures = []
-var last_dash_at = 0
+var last_dash_at = OS.get_system_time_msecs()
 var asp = AudioStreamPlayer.new()
 func _ready():
 	SilentWolf.configure({
@@ -23,10 +23,11 @@ func _ready():
 	asp.stream = preload("res://assets/YARN GAME SONG.mp3")
 	asp.playing = true
 	asp.volume_db = (-8)
+	asp.pause_mode = Node.PAUSE_MODE_PROCESS
 	
 	add_child(asp)
 	
-	# SilentWolf.Scores.get_high_scores()
+	SilentWolf.Scores.get_high_scores()
 	
 	for i in range(1, 121):
 		textures.append(load("res://assets/loadingtexture/lt"+ str(i) +".png"))
