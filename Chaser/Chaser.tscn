@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/arm.png" type="Texture" id=1]
+[ext_resource path="res://assets/cat-head.png" type="Texture" id=1]
 [ext_resource path="res://Chaser/Chaser.gd" type="Script" id=2]
+[ext_resource path="res://assets/cat-paw.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2912.18, 1481.18 )
@@ -15,11 +16,16 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1.04534, 8.25 )
-rotation = 1.5708
-scale = Vector2( 249.806, 182.249 )
+[node name="Head" type="Sprite" parent="."]
+position = Vector2( -8.83466, -1098.99 )
+scale = Vector2( 2.2642, 1.93207 )
+z_index = 5
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 300, 300 )
+
+[node name="Paw" type="Sprite" parent="."]
+position = Vector2( -431.047, -1259.65 )
+scale = Vector2( 0.673684, 0.673684 )
+texture = ExtResource( 3 )
 
 [connection signal="body_shape_entered" from="." to="." method="_on_Chaser_body_shape_entered"]
