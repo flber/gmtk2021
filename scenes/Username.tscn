@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/montserrat_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/Username.gd" type="Script" id=2]
+[ext_resource path="res://assets/montserrat_48.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float alpha;
+
+void fragment(){
+	vec4 input_color = texture(TEXTURE, UV);
+	COLOR.rgb = input_color.rgb;
+	COLOR.a = alpha;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/alpha = 0.25
+
+[node name="Username" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 2 )
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 375.0
+margin_top = 227.0
+margin_right = 649.0
+margin_bottom = 373.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 274.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.886275, 0.352941, 0.352941, 1 )
+custom_colors/font_color_shadow = Color( 0.835294, 0.635294, 0.290196, 1 )
+custom_constants/shadow_offset_y = 3
+text = "Username:"
+align = 1
+
+[node name="Input" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 274.0
+margin_bottom = 105.0
+custom_fonts/font = ExtResource( 1 )
+text = "username"
+
+[node name="Buttons" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 109.0
+margin_right = 274.0
+margin_bottom = 146.0
+
+[node name="Back" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+margin_right = 75.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.886275, 0.352941, 0.352941, 1 )
+custom_colors/font_color_hover = Color( 0.662745, 0.262745, 0.262745, 1 )
+custom_colors/font_color_pressed = Color( 0.886275, 0.352941, 0.352941, 1 )
+text = "Back"
+flat = true
+
+[node name="Spacer" type="Label" parent="CenterContainer/VBoxContainer/Buttons"]
+margin_left = 79.0
+margin_top = 11.0
+margin_right = 139.0
+margin_bottom = 25.0
+text = "               "
+
+[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+margin_left = 143.0
+margin_right = 274.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.886275, 0.352941, 0.352941, 1 )
+custom_colors/font_color_hover = Color( 0.662745, 0.262745, 0.262745, 1 )
+custom_colors/font_color_pressed = Color( 0.886275, 0.352941, 0.352941, 1 )
+text = "Continue"
+flat = true
+
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/Input" to="." method="_on_Username_text_entered"]
+[connection signal="text_entered" from="CenterContainer/VBoxContainer/Input" to="." method="_on_Username_text_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/Continue" to="." method="_on_Continue_pressed"]

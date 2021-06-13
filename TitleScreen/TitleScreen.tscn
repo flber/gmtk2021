@@ -53,6 +53,7 @@ alignment = 1
 margin_top = 63.0
 margin_right = 414.0
 margin_bottom = 123.0
+scene_to_load = "res://scenes/Username.tscn"
 
 [node name="HelpButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 9 )]
 margin_top = 143.0
