@@ -27,33 +27,27 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
-margin_left = 85.0
-margin_top = 96.0
-margin_right = 939.0
-margin_bottom = 504.0
+margin_left = 177.0
+margin_top = 198.0
+margin_right = 847.0
+margin_bottom = 402.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
-margin_right = 854.0
+margin_right = 670.0
 text = "How to play this game:"
 align = 1
 
 [node name="Description" type="Label" parent="CenterContainer/VBoxContainer" index="1"]
 margin_top = 64.0
-margin_right = 854.0
-margin_bottom = 367.0
+margin_right = 670.0
+margin_bottom = 163.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.886275, 0.352941, 0.352941, 1 )
-text = "- lava rises up
-- collectibles?
-- enemies
-- art
--bonus points for skipped (grab one above without grabbing self)
--dist between should increase, accel should increase
--make it possible to catch yourself by if you're moused over while 
-holding down, should catch
--thumb tacks holding postit notes (postits hold grab area)"
+text = "- Click on post-its to swing
+- Shake the mouse quickly to boost while grappled
+- Wait for your cursor to refill before boosting again"
 
 [node name="Button" parent="CenterContainer/VBoxContainer" index="2"]
-margin_top = 371.0
-margin_right = 854.0
-margin_bottom = 408.0
+margin_top = 167.0
+margin_right = 670.0
+margin_bottom = 204.0
