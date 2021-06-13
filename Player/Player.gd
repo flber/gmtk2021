@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 		if $Chain.len_squared() < 150:
 			chain_velocity *= 1.2
 		
-		if shaking(delta) and last_shake + (1.5*1000) < OS.get_system_time_msecs():
+		if shaking(delta) and last_shake + (2*1000) < OS.get_system_time_msecs():
 			last_shake = OS.get_system_time_msecs()
 			dash_dir = to_local($Chain.tip).normalized()
 			$Chain.release()

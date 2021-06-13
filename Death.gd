@@ -24,13 +24,12 @@ func _on_Chaser_death():
 	toggle_pause()
 	GameState.has_died = true
 	score.text = "You made it " + str(int(GameState.score/500)) + " meters!" \
-	+ "\n" + GameState.username +"'s \nbest: " + str(int(GameState.best_score/500)) + " meters."
+	+ "\n" + GameState.username +"'s \nbest: " + str(int(GameState.best_score/500)) + "m"
 	# todo ask for input, then save
 	# todo show
 	SilentWolf.Scores.persist_score(GameState.username, GameState.score)
 	SilentWolf.Scores.get_high_scores()
 	var scores = SilentWolf.Scores.scores
-	print("!! scores !!")
 	if len(scores) > 3:
 		var val1 = (scores[0]["player_name"] + ": " + str(int(scores[0]["score"]/500)))
 		$Full/UI/HighScores/Score1 .text = val1
