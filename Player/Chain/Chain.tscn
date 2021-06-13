@@ -22,9 +22,9 @@ region_rect = Rect2( 12.06, 22.399, 176.003, 2000 )
 collision_layer = 4
 
 [node name="Hook" type="Sprite" parent="Tip"]
+visible = false
 position = Vector2( 7.48775, 2.48061 )
 rotation = 2.09439
-visible = false
 z_index = 1
 texture = ExtResource( 1 )
 
