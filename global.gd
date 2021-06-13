@@ -7,6 +7,7 @@ var best_score = 0
 var count = 0
 var textures = []
 var last_dash_at = 0
+var asp = AudioStreamPlayer.new()
 func _ready():
 	SilentWolf.configure({
 		"api_key": "l2IKmos2jO5M6xQ6iac3s2rHWRc1YuxP94lj39lW",
@@ -18,9 +19,13 @@ func _ready():
 	SilentWolf.configure_scores({
 		"open_scene_on_close": "res://TitleScreen/TitleScreen.tscn"
 	})
-
-
-	SilentWolf.Scores.get_high_scores()
+	
+	asp.stream = preload("res://assets/YARN GAME SONG.mp3")
+	asp.playing = true
+	
+	add_child(asp)
+	
+	# SilentWolf.Scores.get_high_scores()
 	
 	for i in range(1, 121):
 		textures.append(load("res://assets/loadingtexture/lt"+ str(i) +".png"))
