@@ -16,11 +16,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameState="*res://global.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+GameState="*res://global.gd"
 
 [display]
 
+window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
