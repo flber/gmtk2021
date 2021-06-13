@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/365790__gareth-h__golf-club-hitting-bed.wav-1dd774d8db3aa85c1eb567e3f6637bda.sample"
+path="res://.import/365790__gareth-h__golf-club-hitting-bed.wav-96c58a421060704811ac6853853afea1.sample"
 
 [deps]
 
-source_file="res://assets/365790__gareth-h__golf-club-hitting-bed.wav"
-dest_files=[ "res://.import/365790__gareth-h__golf-club-hitting-bed.wav-1dd774d8db3aa85c1eb567e3f6637bda.sample" ]
+source_file="res://365790__gareth-h__golf-club-hitting-bed.wav"
+dest_files=[ "res://.import/365790__gareth-h__golf-club-hitting-bed.wav-96c58a421060704811ac6853853afea1.sample" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lt29.png-357b91289077f0b9b974533c64c717ec.stex"
+path="res://.import/lt29.png-a446770110fdfa9965afabe30b180c7c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/loadingtexture/lt29.png"
-dest_files=[ "res://.import/lt29.png-357b91289077f0b9b974533c64c717ec.stex" ]
+source_file="res://loadingtexture/lt29.png"
+dest_files=[ "res://.import/lt29.png-a446770110fdfa9965afabe30b180c7c.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lt78.png-20fd2083680890a0918dd2444b48b93d.stex"
+path="res://.import/lt78.png-5a292c064219febb80730525a9ffce6f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/loadingtexture/lt78.png"
-dest_files=[ "res://.import/lt78.png-20fd2083680890a0918dd2444b48b93d.stex" ]
+source_file="res://loadingtexture/lt78.png"
+dest_files=[ "res://.import/lt78.png-5a292c064219febb80730525a9ffce6f.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barney-falling.png-2875907ccd7761f21c55ea86e700cdd4.stex"
+path="res://.import/barney-falling.png-201410c5bfc7a661cb0bf94b0fc28560.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/barney-falling.png"
-dest_files=[ "res://.import/barney-falling.png-2875907ccd7761f21c55ea86e700cdd4.stex" ]
+source_file="res://barney-falling.png"
+dest_files=[ "res://.import/barney-falling.png-201410c5bfc7a661cb0bf94b0fc28560.stex" ]
 
 [params]
 

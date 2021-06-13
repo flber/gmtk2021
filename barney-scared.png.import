@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barney-scared.png-cd745c0e6d48ff5439e7140edc88a17e.stex"
+path="res://.import/barney-scared.png-a786df71d46e8bd659fc9883fa42a264.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/barney-scared.png"
-dest_files=[ "res://.import/barney-scared.png-cd745c0e6d48ff5439e7140edc88a17e.stex" ]
+source_file="res://barney-scared.png"
+dest_files=[ "res://.import/barney-scared.png-a786df71d46e8bd659fc9883fa42a264.stex" ]
 
 [params]
 
