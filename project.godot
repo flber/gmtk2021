@@ -14,16 +14,16 @@ config/name="gmtk2021"
 run/main_scene="res://TitleScreen/TitleScreen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameState="*res://global.gd"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+
 [display]
 
 window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
-
-[global]
-
-scale=false
-stre=false
 
 [input]
 
@@ -45,6 +45,8 @@ pause={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Hook"
+2d_physics/layer_4="Grabbables"
+2d_physics/layer_5="Chaser"
 
 [physics]
 

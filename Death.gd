@@ -1,24 +1,14 @@
 extends Control
-
+signal reset_rng
 onready var score = $VBoxContainer/Score
 
 #func _input(event):
 #	if event.is_action_pressed("pause"):
 #		unpause()
-		
-func _on_Player_died():
-	toggle_pause()
-
-#	var text = ""
-#	if GameState.level == 1:
-#		text = "But you survived for at least a while, right?\n"
-#	else:
-#		text = "But you made it " + str(GameState.level) + " levels!\n"
-#	score.text = text
-#	GameState.level = 1
 
 func _on_NewGameButton_pressed():
 	toggle_pause()
+	GameState.has_died = false
 	get_tree().reload_current_scene()
 
 func _on_QuitToMenuButton_pressed():
@@ -29,3 +19,14 @@ func toggle_pause():
 	var new_pause_state = not get_tree().paused
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
+
+func _on_Chaser_death():
+	toggle_pause()
+	GameState.has_died = true
+	score.text = "You made it " + str(int(GameState.score/500)) + " meters!" \
+	+"\nBest " + str(int(GameState.best_score/500)) + " meters."
+	# todo ask for input, then save
+	# todo show
+	SilentWolf.Scores.persist_score("Ezra", GameState.score)
+	SilentWolf.Scores.get_high_scores()
+	print(SilentWolf.Scores.scores)
