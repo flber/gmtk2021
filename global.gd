@@ -4,6 +4,8 @@ var username = "user"
 var score = 0
 var has_died = false
 var best_score = 0
+var count = 0
+
 
 func _ready():
 	SilentWolf.configure({
@@ -16,4 +18,8 @@ func _ready():
 	SilentWolf.configure_scores({
 		"open_scene_on_close": "res://TitleScreen/TitleScreen.tscn"
 	})
+
+func to_res_independant(val):
+	return val * (get_viewport().size.y/1440)
+
 	
