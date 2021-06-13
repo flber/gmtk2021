@@ -34,6 +34,6 @@ func on_dash():
 	last_dash_at = OS.get_system_time_msecs()
 
 func _process(delta):
-	var frame = (((OS.get_system_time_msecs() - last_dash_at)/1000.0)/2.0) * 120
+	var frame = ((OS.get_system_time_msecs() - last_dash_at)/1000.0/5.0) * 120
 	frame = clamp(frame, 0, 119)
 	Input.set_custom_mouse_cursor(textures[frame], 0, Vector2(256/2, 256/2))
