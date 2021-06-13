@@ -240,8 +240,8 @@ stream = ExtResource( 12 )
 volume_db = -8.0
 script = ExtResource( 13 )
 
-[connection signal="start_dash" from="Player" to="Camera2D" method="_on_Player_start_dash"]
 [connection signal="start_dash" from="Player" to="AudioStreamPlayer" method="_on_Player_start_dash"]
+[connection signal="start_dash" from="Player" to="Camera2D" method="_on_Player_start_dash"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/ResumeButton" to="Player/Overlays/Pause" method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Pause" method="_on_QuitToMenuButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Death/Full/UI/LevelButtons/Buttons/NewGameButton" to="Player/Overlays/Death" method="_on_NewGameButton_pressed"]
