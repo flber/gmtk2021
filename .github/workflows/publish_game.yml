@@ -8,7 +8,7 @@ jobs:
       - name: download widows
         uses: dsaltares/fetch-gh-release-asset@master
         with:
-          file: gmtk2021.zip
+          file: tangled.zip
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: release windows
@@ -16,16 +16,16 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: win
-          ITCH_GAME: gmtk2021
+          ITCH_GAME: tangled
           ITCH_USER: flber
-          PACKAGE: gmtk2021.zip
+          PACKAGE: tangled.zip
   release_linux:
     runs-on: ubuntu-latest
     steps:
       - name: download linux
         uses: dsaltares/fetch-gh-release-asset@master
         with:
-          file: gmtk2021-linux.zip
+          file: tangled-linux.zip
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: release linux
@@ -33,16 +33,16 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: linux
-          ITCH_GAME: gmtk2021
+          ITCH_GAME: tangled
           ITCH_USER: flber
-          PACKAGE: gmtk2021-linux.zip  
+          PACKAGE: tangled-linux.zip  
   release_osx:
     runs-on: ubuntu-latest
     steps:
       - name: download osx
         uses: dsaltares/fetch-gh-release-asset@master
         with:
-          file: gmtk2021-osx.zip
+          file: tangled-osx.zip
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: release osx
@@ -50,16 +50,16 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: osx
-          ITCH_GAME: gmtk2021
+          ITCH_GAME: tangled
           ITCH_USER: flber
-          PACKAGE: gmtk2021-osx.zip
+          PACKAGE: tangled-osx.zip
   release_html5:
     runs-on: ubuntu-latest
     steps:
       - name: download html5
         uses: dsaltares/fetch-gh-release-asset@master
         with:
-          file: gmtk2021-html5.zip
+          file: tangled-html5.zip
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: release html5
@@ -67,6 +67,6 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: html5
-          ITCH_GAME: gmtk2021
+          ITCH_GAME: tangled
           ITCH_USER: flber
-          PACKAGE: gmtk2021-html5.zip  
+          PACKAGE: tangled-html5.zip  
