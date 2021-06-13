@@ -29,9 +29,6 @@ current = true
 zoom = Vector2( 2, 2 )
 script = ExtResource( 11 )
 
-[node name="Chaser" parent="." instance=ExtResource( 4 )]
-z_index = 5
-
 [node name="Node2D" type="Node2D" parent="Camera2D"]
 position = Vector2( -100, -100 )
 script = ExtResource( 16 )
@@ -45,6 +42,9 @@ script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Chaser" parent="." instance=ExtResource( 4 )]
+z_index = 5
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -645.426, -107.635 )
@@ -258,8 +258,8 @@ volume_db = -8.0
 script = ExtResource( 13 )
 
 [connection signal="death" from="Chaser" to="Player/Overlays/Death" method="_on_Chaser_death"]
-[connection signal="start_dash" from="Player" to="AudioStreamPlayer" method="_on_Player_start_dash"]
 [connection signal="start_dash" from="Player" to="Camera2D" method="_on_Player_start_dash"]
+[connection signal="start_dash" from="Player" to="AudioStreamPlayer" method="_on_Player_start_dash"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/ResumeButton" to="Player/Overlays/Pause" method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Pause/VBoxContainer/QuitToMenuButton" to="Player/Overlays/Pause" method="_on_QuitToMenuButton_pressed"]
 [connection signal="pressed" from="Player/Overlays/Death/Full/UI/LevelButtons/Buttons/NewGameButton" to="Player/Overlays/Death" method="_on_NewGameButton_pressed"]
