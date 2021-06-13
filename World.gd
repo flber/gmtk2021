@@ -9,7 +9,7 @@ onready var player := $Player
 var scene = preload("res://GrapplePoint/GraplePoint.tscn")
 var set_scene = preload("res://scenes/Set.tscn")
 var highest = scene.instance()
-var chase_speed = 400
+var chase_speed = 500
 
 var rng = RandomNumberGenerator.new()
 
