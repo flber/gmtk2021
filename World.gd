@@ -1,25 +1,24 @@
 extends Node2D
 
 
-const MAX_FROM_CENTER = 0.35
-
-
 onready var cam := $Camera2D
 onready var player := $Player
-var scene = preload("res://GrapplePoint/GraplePoint.tscn")
-var set_scene = preload("res://scenes/Set.tscn")
-var highest = scene.instance()
-var chase_speed = 60
+# <<<<<<< HEAD
+# var scene = preload("res://GrapplePoint/GraplePoint.tscn")
+# var set_scene = preload("res://scenes/Set.tscn")
+# var highest = scene.instance()
+# var chase_speed = 60
+# =======
+# >>>>>>> 4048048607a45276771720a10f0920ab05f68737
 
-var rng = RandomNumberGenerator.new()
-
-var last_dash_at = 0
-var highest_set_y := 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	
+	cam.position.x = get_viewport_rect().size.x * 0.5
+	$GraplePoint/Button.connect("button_down", $Player, "_should_shoot_at", [$GraplePoint.position])
+	$GraplePoint2/Button.connect("button_down", $Player, "_should_shoot_at", [$GraplePoint2.position])
+	$GraplePoint3/Button.connect("button_down", $Player, "_should_shoot_at", [$GraplePoint3.position])
+		
 	$Player.connect("start_dash", GameState, "on_dash")
 	
 	highest_set_y = get_node("Set").position.y
