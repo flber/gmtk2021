@@ -36,7 +36,7 @@ __meta__ = {
 }
 
 [node name="Cork5" type="Sprite" parent="."]
-position = Vector2( 278.336, -689.011 )
+position = Vector2( 278.336, -635.678 )
 rotation = -1.59027
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 1 )
