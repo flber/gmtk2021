@@ -19,6 +19,7 @@ var DASH_TIME = 0.25 * 1000
 var velocity = Vector2(0,0)		# The velocity of the player (kept over time)
 var chain_velocity := Vector2(0,0)
 var can_jump = false			# Whether the player used their air-jump
+var almost_zero = 10
 
 var last_shake = OS.get_system_time_msecs()
 var dash_dir = Vector2.ZERO
@@ -74,17 +75,22 @@ func _physics_process(delta: float) -> void:
 	velocity.y = min(velocity.y, MAX_SPEED)	# Make sure we are in our limits
 	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 	
-	
 	#if $Chain.hooked and $Chain.len_squared() > $Chain.old_len_sq and $Chain.len_squared() < 250*250 \
 	#and velocity.length_squared() > 200*200 and OS.get_ticks_msec() - $Chain.hooked_time  > 150:
 	#	$Chain.release()
 
-	
-	
 	if is_on_floor():
 		velocity.x *= FRICTION_GROUND
 	else:
 		velocity *= FRICTION_AIR
+	
+	if velocity.y > almost_zero:
+		$Sprite.texture = load("res://assets/barney-scared.png")
+	elif velocity.y < -2500:
+		$Sprite.texture = load("res://assets/barney-falling.png")
+	elif velocity.y < almost_zero:
+		$Sprite.texture = load("res://assets/barney.png")
+
 
 func shaking(delta: float) -> bool:
 	# todo fix this because get_last_mouse_speed could return the same speed multiple times if the user stops moving the mouse
