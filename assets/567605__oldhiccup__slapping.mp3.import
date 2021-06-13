@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/567605__oldhiccup__slapping.mp3-fb188b4d06e9fe86ae25fcec1ae5383a.mp3str"
+
+[deps]
+
+source_file="res://assets/567605__oldhiccup__slapping.mp3"
+dest_files=[ "res://.import/567605__oldhiccup__slapping.mp3-fb188b4d06e9fe86ae25fcec1ae5383a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

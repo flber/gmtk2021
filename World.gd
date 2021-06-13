@@ -49,8 +49,7 @@ func _ready():
 		cur.position.y = highest_set_y - 2951.92 # magic number
 		highest_set_y = cur.position.y
 		add_child(cur)
-	
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$Chaser.get_node("Paw").position.x = player.position.x

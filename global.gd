@@ -6,7 +6,7 @@ var has_died = false
 var best_score = 0
 var count = 0
 var textures = []
-var last_dash_at = OS.get_system_time_msecs()
+var last_dash_at = 0
 var asp = AudioStreamPlayer.new()
 func _ready():
 	SilentWolf.configure({
@@ -34,7 +34,6 @@ func _ready():
 
 
 func to_res_independant(val):
-	return val * (get_viewport().size.y/1440)
 	return val * (get_viewport().size.y/1440)
 
 func on_dash():
