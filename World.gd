@@ -9,7 +9,7 @@ onready var player := $Player
 var scene = preload("res://GrapplePoint/GraplePoint.tscn")
 var set_scene = preload("res://scenes/Set.tscn")
 var highest = scene.instance()
-var chase_speed = 65
+var chase_speed = 60
 
 var rng = RandomNumberGenerator.new()
 
@@ -47,6 +47,8 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$Chaser.get_node("Paw").position.x = player.position.x
+	
 	var gen_new = false
 	cam.position.y = player.position.y
 	while highest.position.y + 1440 * 2 > player.position.y:
@@ -81,7 +83,6 @@ func gen_new():
 
 
 func _physics_process(delta):
-	
 	GameState.score = max(GameState.score, -player.position.y)
 	GameState.best_score = max(GameState.score, GameState.best_score)
 	
