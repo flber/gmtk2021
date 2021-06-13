@@ -8,14 +8,14 @@ signal start_dash
 
 extends KinematicBody2D
 
-const JUMP_FORCE = 1550			# Force applied on jumping
-const MOVE_SPEED = 500			# Speed to walk with
-const GRAVITY = 60				# Gravity applied every second
-const MAX_SPEED = 5000			# Maximum speed the player is allowed to move
-const FRICTION_AIR = 0.98		# The friction while airborne
-const FRICTION_GROUND = 0.85
-const CHAIN_PULL = 125
-const DASH_TIME = 0.25 * 1000
+var JUMP_FORCE = GameState.to_res_independant(1550)			# Force applied on jumping
+var MOVE_SPEED = GameState.to_res_independant(500)			# Speed to walk with
+var GRAVITY = GameState.to_res_independant(60)				# Gravity applied every second
+var MAX_SPEED = GameState.to_res_independant(5000)			# Maximum speed the player is allowed to move
+var FRICTION_AIR = GameState.to_res_independant(0.98)		# The friction while airborne
+var FRICTION_GROUND = GameState.to_res_independant(0.85)
+var CHAIN_PULL = GameState.to_res_independant(125)
+var DASH_TIME = 0.25 * 1000
 var velocity = Vector2(0,0)		# The velocity of the player (kept over time)
 var chain_velocity := Vector2(0,0)
 var can_jump = false			# Whether the player used their air-jump
@@ -42,7 +42,6 @@ func _physics_process(delta: float) -> void:
 
 	# Hook physics
 	if last_shake + DASH_TIME > OS.get_system_time_msecs():
-		
 		velocity = dash_dir * CHAIN_PULL * 1.65 * 20
 		chain_velocity = Vector2.ZERO
 	elif $Chain.hooked:
@@ -55,7 +54,7 @@ func _physics_process(delta: float) -> void:
 			# Pulling up is stronger
 			chain_velocity.y *= 1.65
 
-		if $Chain.len_squared() < 150:
+		if $Chain.len_squared() < GameState.to_res_independant(150):
 			chain_velocity *= 1.2
 		
 		if shaking(delta) and last_shake + (1.5*1000) < OS.get_system_time_msecs():
@@ -89,5 +88,5 @@ func _physics_process(delta: float) -> void:
 
 func shaking(delta: float) -> bool:
 	# todo fix this because get_last_mouse_speed could return the same speed multiple times if the user stops moving the mouse
-	return Input.get_last_mouse_speed().length() > 4000 and Input.is_mouse_button_pressed(1)
+	return Input.get_last_mouse_speed().length() > GameState.to_res_independant(4000) and Input.is_mouse_button_pressed(1)
 	#return Input.is_mouse_button_pressed(2) and Input.is_mouse_button_pressed(1)
