@@ -19,6 +19,9 @@ var highest_set_y := 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
+	
+	$Player.connect("start_dash", GameState, "on_dash")
+	
 	highest_set_y = get_node("Set").position.y
 	
 	rand_seed(hash(OS.get_system_time_msecs()))
@@ -97,6 +100,9 @@ func _physics_process(delta):
 #		else:
 #			$Chaser.position.y = min(lerp($Chaser.position.y, player.position.y + 1440*2, 0.6), $Chaser.position.y)
 
+	if player.position.y > -400:
+		$Chaser.position.y = 1481.18 + 200
+	
 func on_dash():
 	last_dash_at = OS.get_system_time_msecs()
 	

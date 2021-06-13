@@ -21,7 +21,7 @@ var chain_velocity := Vector2(0,0)
 var can_jump = false			# Whether the player used their air-jump
 var almost_zero = 10
 
-var last_shake = OS.get_system_time_msecs()
+var last_shake = 0
 var dash_dir = Vector2.ZERO
 
 func _input(event):
@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		if $Chain.len_squared() < 150:
 			chain_velocity *= 1.2
 		
-		if shaking(delta) and last_shake + (1.5*1000) < OS.get_system_time_msecs():
+		if shaking(delta) and last_shake + (5*1000) < OS.get_system_time_msecs():
 			last_shake = OS.get_system_time_msecs()
 			dash_dir = to_local($Chain.tip).normalized()
 			$Chain.release()

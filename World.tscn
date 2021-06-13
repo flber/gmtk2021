@@ -234,6 +234,8 @@ collision_mask = 2
 shape = SubResource( 1 )
 
 [node name="Chaser" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 11401.9 )
+z_index = 1000
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
