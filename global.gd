@@ -9,7 +9,7 @@ func _ready():
 	SilentWolf.configure({
 		"api_key": "l2IKmos2jO5M6xQ6iac3s2rHWRc1YuxP94lj39lW",
 		"game_id": "gmtk2021",
-		"game_version": "1.0.0",
+		"game_version": "1.1.0",
 		"log_level": 0
 	})
 
