@@ -20,7 +20,10 @@ func toggle_pause():
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
 
+signal death_shake
 func _on_Chaser_death():
+	emit_signal("death_shake")
+	
 	toggle_pause()
 	GameState.has_died = true
 	score.text = "You made it " + str(int(GameState.score/500)) + " meters!" \

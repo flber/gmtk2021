@@ -31,3 +31,7 @@ func shake():
 func _on_Player_start_dash():
 	trauma += 1
 	trauma = clamp(trauma, 0, 1)
+
+func _on_Death_death_shake():
+	trauma += 1
+	trauma = clamp(trauma, 0, 1)
