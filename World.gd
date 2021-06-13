@@ -9,6 +9,7 @@ onready var player := $Player
 var scene = preload("res://GrapplePoint/GraplePoint.tscn")
 var set_scene = preload("res://scenes/Set.tscn")
 var highest = scene.instance()
+var chase_speed = 65
 
 var rng = RandomNumberGenerator.new()
 
@@ -87,8 +88,17 @@ func _physics_process(delta):
 	$Lbound.position.y = player.position.y
 	$Rbound.position.y = player.position.y
 	
-	if !(last_dash_at + (3 * 1000) > OS.get_system_time_msecs()):
-		$Chaser.position.y = min(lerp($Chaser.position.y, player.position.y + 1440*2, 0.6), $Chaser.position.y)
+	$Chaser.position.y = $Chaser.position.y - (chase_speed * delta)
+	if last_dash_at + (1.4 * 1000) > OS.get_system_time_msecs():
+		$Chaser.position.y = player.position.y + $Chaser.get_node("CollisionShape2D").get_shape().get_extents().y * 2
+#	if !(last_dash_at + (3 * 1000) > OS.get_system_time_msecs()):
+#		if player.position.y < -400:
+#				$Chaser.position.y = 1481.18
+#		
+#		elif $Chaser.position.y > 0:
+#			pass
+#		else:
+#			$Chaser.position.y = min(lerp($Chaser.position.y, player.position.y + 1440*2, 0.6), $Chaser.position.y)
 
 	if player.position.y > -400:
 		$Chaser.position.y = 1481.18 + 200
