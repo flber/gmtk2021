@@ -22,6 +22,7 @@ func _ready():
 	
 	asp.stream = preload("res://assets/YARN GAME SONG.mp3")
 	asp.playing = true
+	asp.volume_db = (-8)
 	
 	add_child(asp)
 	

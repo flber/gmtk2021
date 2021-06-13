@@ -44,6 +44,12 @@ func _ready():
 	
 	$Player.connect("start_dash", self, "on_dash")
 	
+	for i in range(10):
+		var cur = set_scene.instance()
+		cur.position.y = highest_set_y - 2951.92 # magic number
+		highest_set_y = cur.position.y
+		add_child(cur)
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
