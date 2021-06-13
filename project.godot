@@ -16,8 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameState="*res://global.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+GameState="*res://global.gd"
 
 [display]
 

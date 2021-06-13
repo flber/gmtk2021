@@ -5,8 +5,8 @@
 [node name="NewGame" instance=ExtResource( 1 )]
 
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
-margin_left = 439.0
-margin_right = 841.0
+margin_left = 311.0
+margin_right = 713.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 402.0
