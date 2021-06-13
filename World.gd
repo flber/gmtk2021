@@ -57,7 +57,7 @@ func gen_new():
 	
 
 	while is_equal_approx(new.position.x, highest.position.x):
-		var rand_height_options = [rng.randf_range(GameState.to_res_independant(-1000), GameState.to_res_independant(-300)), rng.randf_range(GameState.to_res_independant(300), GameState.to_res_independant(1000))]
+		var rand_height_options = [rng.randf_range(-1000, -300), rng.randf_range(300, 1000)]
 		new.position.x = highest.position.x + rand_height_options[randi() % 2]
 		new.position.x = clamp(new.position.x, 2457 *-MAX_FROM_CENTER, 2457 * MAX_FROM_CENTER)
 	
@@ -66,7 +66,7 @@ func gen_new():
 	
 	while highest_set_y > new.position.y:
 		var cur = set_scene.instance()
-		cur.position.y = highest_set_y - GameState.to_res_independant(2951.92) # magic number
+		cur.position.y = highest_set_y - 2951.92 # magic number
 		highest_set_y = cur.position.y
 		add_child(cur)
 	

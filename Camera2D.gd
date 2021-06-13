@@ -3,8 +3,8 @@ extends Camera2D
 export var decay = 1.5
 export var power = 2
 
-var max_angle = GameState.to_res_independant(5)
-var max_offset = GameState.to_res_independant(Vector2(10, 10))
+var max_angle = 5
+var max_offset = Vector2(10, 10)
 
 var trauma = 0
 

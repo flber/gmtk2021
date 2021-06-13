@@ -21,5 +21,5 @@ func _ready():
 
 
 func to_res_independant(val):
-	return val
+	return val * (get_viewport().size.y/1440)
 	
